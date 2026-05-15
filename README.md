@@ -6,7 +6,6 @@
 >
 > 📌 Based on **Cline 3.7.9** development. AI-assisted integration theoretically supports any version. Hope the official Cline project will provide a native solution in the future.
 >
-> Extracted from the [cline-sub](https://github.com/cline/cline) enhanced fork, can be integrated into any Cline fork.
 
 ---
 
@@ -26,12 +25,10 @@ Cline's Main Agent uses expensive models (e.g., Claude, GPT-4), and every code s
 - Configure **independent** API Provider / Model / API Key / Base URL for Subagents
 - Two modes: **reuse main API** or **use independent cheap API** (e.g., DeepSeek, Qwen, Gemini Flash)
 - YAML-formatted Agent configuration files (`~/Documents/Cline/Agents/`)
-- Up to **5 Subagents in parallel** for faster task processing
 
 ### API Profile Preset Management (Multi-API Switching)
 - **Save / Load** API configurations as named presets (Profiles)
 - Main Agent and Subagent can **each select different Profiles**
-- Title bar buttons can bind to Profiles for **one-click API config switching**
 - Profiles contain non-sensitive options and optional Secrets overrides
 
 ### Subagent Runtime Engine
@@ -65,8 +62,6 @@ cline-subagent-profile/
 │       │   │   └── applyApiProfile.ts # Apply Profile to API config
 │       │   ├── state/
 │       │   │   └── updateSettings.ts  # Settings update (with subagentsEnabled)
-│       │   └── ui/
-│       │       └── subscribeToApiProfileButtonClicked.ts # Profile button events
 │       │
 │       └── task/
 │           └── tools/
@@ -104,7 +99,6 @@ cline-subagent-profile/
 | File | Lines | Description |
 |------|------:|-------------|
 | `applyApiProfile.ts` | 70 | `applyApiProfileToMainAgent()` + `applyApiProfileToSubagent()` |
-| `subscribeToApiProfileButtonClicked.ts` | 94 | Subscription and broadcast mechanism for Profile buttons 1/2 |
 | `updateSettings.ts` | 316 | Settings update handling, including Subagent fields |
 
 ### Subagent Runtime
@@ -122,7 +116,7 @@ cline-subagent-profile/
 |------|------:|-------------|
 | `ApiProfilesSection.tsx` | 184 | Profile create / select / delete / rename UI |
 | `SubagentApiConfigurationSection.tsx` | 106 | Independent Subagent API configuration panel |
-| `ApiConfigurationSection.tsx` | 92 | API configuration area with Profile buttons |
+| `ApiConfigurationSection.tsx` | 92 | API configuration area |
 
 ---
 
@@ -173,7 +167,6 @@ See -> [INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md)
 1. **These files are reference code, not a standalone package** - they must be integrated into a Cline project before use.
 2. **`state-keys.ts` and `ExtensionMessage.ts` are complete files** - merge the differences during integration instead of replacing existing files blindly.
 3. **`updateSettings.ts` is a complete file** - merge the differences as well.
-4. **Vanilla Cline does not include these features** - they are enhancements from the cline-sub fork.
 
 ---
 
@@ -183,5 +176,4 @@ Same as the main Cline project.
 
 ## Credits
 
-- Feature source: [cline-sub](https://github.com/cline/cline) enhanced fork
 - Based on the [Cline](https://github.com/cline/cline) open-source project
