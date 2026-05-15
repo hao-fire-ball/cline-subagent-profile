@@ -1,0 +1,16 @@
+# 临时文件
+temp_hex.txt
+_checker.py
+_filelist.txt
+CLINE_TASK_PROGRESS.md
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/
